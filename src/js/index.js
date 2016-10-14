@@ -6,8 +6,19 @@ if (process.env.NODE_ENV == "dev") {
 
 var React = require("react");
 var ReactDom = require("react-dom");
-// var ChartbuilderLocalStorageAPI = require("./util/ChartbuilderLocalStorageAPI");
+var ChartbuilderLocalStorageAPI = require("./util/ChartbuilderLocalStorageAPI");
 // var Chartbuilder = require("./components/Chartbuilder.jsx");
 var container = document.querySelector(".chartbuilder-container");
 
-console.log(container);
+document.addEventListener("DOMContentLoaded", function() {
+	document.cookie = "authed=yes";
+	// Initialize data from localStorage
+	ChartbuilderLocalStorageAPI.defaultChart();
+	// Render parent chartbuilder component
+	// ReactDOM.render(
+	// 	<Chartbuilder
+	// 		showMobilePreview={false}
+	// 		enableJSONExport={true}
+	// 	/>,
+	// container );
+});
